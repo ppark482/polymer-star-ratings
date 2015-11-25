@@ -15,14 +15,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
-
-    <!-- Step 1: import the element to test -->
     <link rel="import" href="../star-ratings.html">
   </head>
   <body>
 
     <!-- You can use the document as a place to set up your fixtures. -->
-    <star-ratings></star-ratings>
+    <star-ratings active-stars="3.2"></star-ratings>
 
+    <script>
+        suite('<star-ratings>', function () {
+
+            var el = document.querySelector('star-ratings');
+
+            test('active-stars should be a number', function () {
+                assert.isNumber(el.activeStars, 'active-stars should be a number');
+            });
+
+            test('active-stars should be between 0 and 5', function () {
+               assert.isTrue(el.activeStars >= 0 && el.activeStars <= 5, 'active-stars should be between 0 and 5')
+            });
+
+        });
+
+
+    </script>
   </body>
 </html>
