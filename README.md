@@ -1,6 +1,6 @@
 # star-ratings
 
-An element providing a starting point for your own reusable Polymer elements.
+A [Polymer](https://elements.polymer-project.org/) component for displaying star ratings between 0 and 5.
 
 
 ## Dependencies
