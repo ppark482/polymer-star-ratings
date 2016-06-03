@@ -1,0 +1,30 @@
+{
+  "name": "star-ratings",
+  "version": "1.0",
+  "authors": [
+    "Anonymous <anonymous@example.com>"
+  ],
+  "description": "An element providing a solution to no problem in particular.",
+  "keywords": [
+    "web-component",
+    "polymer",
+    "seed"
+  ],
+  "main": "star-ratings.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "ignore": [
+    "/.*",
+    "/test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.0",
+    "fontawesome-iconset": "https://github.com/vangware/fontawesome-iconset.git#dd776932121f2eae80042e3cf4e36a6f738db39b",
+    "iron-icons": "PolymerElements/iron-icons#~1.0.5",
+    "iron-iconset-svg": "PolymerElements/iron-iconset-svg#~1.0.9",
+    "iron-icon": "PolymerElements/iron-icon#~1.0.7"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*"
+  }
+}

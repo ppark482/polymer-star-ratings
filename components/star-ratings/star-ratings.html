@@ -1,0 +1,93 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../fontawesome-iconset/fa-all.html">
+<link rel="import" href="custom-stars.html">
+<!--
+Polymer 1.0+ Star Ratings
+
+Example:
+
+    <star-ratings active-stars="3"></star-ratings>
+
+'active-stars' can take numbers between and including 0 - 5 as well as decimals.
+
+@group star-ratings
+@element star-ratings
+@demo demo/index.html
+@hero hero.svg
+-->
+<dom-module id="star-ratings">
+    <style>
+        :host {
+            display: block;
+        }
+
+        :host iron-icon {
+            width: var(--star-ratings-width, 18px);
+            height: auto;
+            color: black;
+        }
+    </style>
+    <template></template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: 'star-ratings',
+        properties: {
+            activeStars: {
+                type: Number,
+                notify:true,
+                observer: '_updateStars'
+            }
+        },
+        _updateStars: function(newValue) {
+
+            var fullStar = '<iron-icon icon="fa:star"></iron-icon>';
+            var thirdStar = '<iron-icon icon="custom-stars:star-one-quarter-o"></iron-icon>';
+            var halfStar = '<iron-icon icon="fa:star-half-o"></iron-icon>';
+            var quarterStar = '<iron-icon icon="custom-stars:star-three-quarter-o"></iron-icon>';
+            var emptyStar = '<iron-icon icon="fa:star-o"></iron-icon>';
+
+            var full = Math.floor(newValue);
+            var part = newValue - Math.floor(newValue);
+
+            var array = [];
+
+            for (var i = 0; i < full; i++) {
+                array.push(fullStar);
+            }
+
+            if(part >= 0.7) {
+                array.push(quarterStar);
+            } else if(part >= 0.5 && part < 0.7) {
+                array.push(halfStar);
+            } else if(part < 0.5 && part > 0.0) {
+                array.push(thirdStar);
+            }
+
+            var tmp = 5 - full;
+
+            if(part > 0.0) {
+                tmp = tmp - 1;
+            }
+
+            if(tmp >= 1) {
+                for (var m = 0; m < tmp; m++) {
+                    array.push(emptyStar);
+                }
+            }
+
+            this.innerHTML = '<div class="flex horizontal layout">' + array.join('') + '</div>';
+        }
+    });
+</script>
+
